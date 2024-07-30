@@ -1,0 +1,58 @@
+/* Header.css */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ffffff;
+  }
+  
+  .logo-image {
+    height: 40px; /* 로고의 높이 */
+    width: auto;
+    margin-right: 10px; /* 로고와 텍스트 간의 간격 */
+  }
+  
+  .logo-text {
+    font-size: 1.5rem; /* 로고 텍스트의 크기 */
+    font-weight: bold;
+  }
+  
+  .auth-links {
+    display: flex;
+    gap: 15px; /* 로그인과 회원가입 버튼 사이의 간격 */
+  }
+  
+  .auth-link {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1rem; /* 버튼의 텍스트 크기 */
+    padding: 8px 16px; /* 버튼의 패딩 */
+    border-radius: 5px; /* 버튼의 모서리 둥글게 */
+    transition: background-color 0.3s, color 0.3s; /* 배경색과 텍스트 색상 전환 */
+  }
+  
+  .auth-link:hover {
+    background-color: #444; /* 호버 시 배경색 */
+    color: #ffffff; /* 호버 시 텍스트 색상 */
+  }
+  
+  .auth-link:active {
+    background-color: #555; /* 클릭 시 배경색 */
+  }
+  

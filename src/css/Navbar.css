@@ -1,0 +1,37 @@
+/* Navbar.css */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #333; /* 배경색 */
+  padding: 10px 20px; /* 상하 패딩, 좌우 패딩 */
+}
+
+.navbar-list {
+  display: flex;
+  list-style: none; /* 기본 리스트 스타일 제거 */
+  margin: 0; /* 기본 마진 제거 */
+  padding: 0; /* 기본 패딩 제거 */
+}
+
+.navbar-list li {
+  margin-left: 20px; /* 각 메뉴 항목 사이의 간격 */
+}
+
+.navbar-list a {
+  color: #ffffff; /* 링크 텍스트 색상 */
+  text-decoration: none; /* 기본 밑줄 제거 */
+  font-size: 1.2rem; /* 폰트 크기 */
+  padding: 5px 10px; /* 패딩 */
+  border-radius: 5px; /* 모서리 둥글게 */
+  transition: background-color 0.3s, color 0.3s; /* 배경색과 텍스트 색상 전환 */
+}
+
+.navbar-list a:hover {
+  background-color: #444; /* 호버 시 배경색 */
+  color: #ffffff; /* 호버 시 텍스트 색상 */
+}
+
+.navbar-list a:active {
+  background-color: #555; /* 클릭 시 배경색 */
+}
