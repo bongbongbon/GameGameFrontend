@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'  # 사용할 Node.js 버전
+          node-version: '18'  # 사용할 Node.js 버전
 
       - name: Install dependencies
         run: npm install
@@ -35,14 +35,4 @@ jobs:
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/frontend:latest .
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/frontend:latest
 
-      - name: Docker compose
-        uses: appleboy/ssh-action@master
-        with:
-          username: ubuntu
-          host: ${{ secrets.LIVE_SERVER_IP }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script_stop: true
-          script: |
-            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/frontend:latest
-            sudo docker-compose -f docker-compose-frontend.yml up -d
 
