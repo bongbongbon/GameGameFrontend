@@ -1,40 +1,41 @@
-name: CI/CD Pipeline
+name: Deploy React App
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main  # 배포를 원하는 브랜치
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '14'  # 사용할 Node.js 버전
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build the React app
+      - name: Build React app
         run: npm run build
 
-      - name: Log in to DockerHub
-        uses: docker/login-action@v2
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push Docker image
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/my-react-app:latest .
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/my-react-app:latest
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/frontend:latest .
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/frontend:latest
 
-      - name: Deploy docker-compose
+      - name: Docker compose
         uses: appleboy/ssh-action@master
         with:
           username: ubuntu
@@ -42,7 +43,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script_stop: true
           script: |
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/my-react-app:latest
-            docker stop my-react-container || true
-            docker rm my-react-container || true
-            docker run -d -p 3000:3000 --name my-react-container ${{ secrets.DOCKERHUB_USERNAME }}/my-react-app:latest
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/frontend:latest
+            sudo docker-compose -f docker-compose-frontend.yml up -d
+
