@@ -1,8 +1,13 @@
-FROM node:14-alpine
+# 가져올 이미지를 정의
+FROM node:14
+
 WORKDIR /app
-COPY package*.json ./
+
+COPY package.json .
+
 RUN npm install
+
 COPY . .
-RUN npm run build
+
 EXPOSE 3000
-CMD ["npx", "serve", "-s", "build", "-l", "3000"]
+CMD ["npm", "start"]

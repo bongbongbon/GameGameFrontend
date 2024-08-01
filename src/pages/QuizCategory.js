@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import QuizNavbar from '../components/QuizNavbar';
@@ -8,9 +7,7 @@ import '../css/Quiz.css';
 
 function QuizCategory() {
 
-  const [loading, setLoading] = useState(true); // 로딩 상태
-  const [error, setError] = useState(null); // 오류 상태
-  const quizzesPerPage = 12; // 페이지 당 퀴즈 수
+
 
 
   return (

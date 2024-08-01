@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import QuizNavbar from '../components/QuizNavbar';
-import axios from 'axios';
 import '../css/QuizDetail.css';
 import { useNavigate } from 'react-router-dom'; // useNavigate 훅을 import합니다.
 import axiosInstance from '../contexts/axiosInstance';
