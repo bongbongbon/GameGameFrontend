@@ -22,7 +22,7 @@ const AuthProvider = ({ children }) => {
 
   const getCurrentUser = async (token) => {
     try {
-      const response = await axios.post('/api/auth/me', {}, {
+      const response = await axiosInstance.post('/api/auth/me', {}, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
