@@ -1,4 +1,5 @@
 // src/contexts/AuthContext.js
+import axios from 'axios';
 import React, { createContext, useState } from 'react';
 import axiosInstance from '../contexts/axiosInstance';
 
@@ -21,7 +22,7 @@ const AuthProvider = ({ children }) => {
 
   const getCurrentUser = async (token) => {
     try {
-      const response = await axiosInstance.post('/api/auth/me', {}, {
+      const response = await axios.post('/api/auth/me', {}, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
