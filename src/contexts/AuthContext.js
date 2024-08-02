@@ -17,11 +17,7 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const logout = () => {
-    localStorage.removeItem('token');
-    setUser(null);
-    window.location.href = '/'; // 로그인 페이지로 리다이렉트
-  };
+
 
   const getCurrentUser = async (token) => {
     try {
@@ -33,8 +29,13 @@ const AuthProvider = ({ children }) => {
       setUser(response.data);
     } catch (error) {
       console.error('Failed to fetch current user:', error);
-      logout();
     }
+  };
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    setUser(null);
+    window.location.href = '/'; // 로그인 페이지로 리다이렉트
   };
 
   return (
