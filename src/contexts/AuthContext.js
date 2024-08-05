@@ -19,7 +19,6 @@ const AuthProvider = ({ children }) => {
   };
 
 
-
   const getCurrentUser = async (token) => {
     try {
       const response = await axiosInstance.post('/api/auth/me', {}, {

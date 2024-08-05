@@ -12,6 +12,7 @@ import QuizCreate from './pages/QuizCreate';
 import QuizDetail from './pages/QuizDetail';
 import QuizCategory from './pages/QuizCategory';
 import Login from './pages/Login';
+import QuizMyResult from './pages/QuizMyResult';
 
 // 게임게시판 페이지
 import Board from './pages/Board';
@@ -32,7 +33,7 @@ function App() {
             <Route path="/quiz/create" element={<QuizCreate />} />
             <Route path="/quiz/get/:id" element={<QuizDetail />} />
             <Route path="/quiz/category" element={<QuizCategory />} />
-
+            <Route path='/quiz/myResult' element={<QuizMyResult />} />
 
             <Route path="/board" element={<Board />} />
         </Routes>
