@@ -6,12 +6,15 @@ import { AuthProvider } from './contexts/AuthContext';
 // 공지사항 페이지
 import Notice from './pages/Notice';
 
+// 유저 페이지
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+
 // 퀴즈 페이지
 import Quiz from './pages/Quiz';
 import QuizCreate from './pages/QuizCreate';
 import QuizDetail from './pages/QuizDetail';
 import QuizCategory from './pages/QuizCategory';
-import Login from './pages/Login';
 import QuizMyResult from './pages/QuizMyResult';
 
 // 게임게시판 페이지
@@ -25,6 +28,7 @@ function App() {
             <Route path="/" element={<Home />} />
 
             <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<SignUp />} />
 
 
             <Route path="/notice" element={<Notice />} />

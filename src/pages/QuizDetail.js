@@ -72,6 +72,7 @@ function QuizDetail() {
       <div className='quiz-detail-card'>
             <div className='quiz-container'>
                 <p>카테고리: {quiz.category}</p>
+                <p>조회수: {quiz.views}</p>
               <h1>질문: {quiz.content}</h1>
             </div>
         </div>

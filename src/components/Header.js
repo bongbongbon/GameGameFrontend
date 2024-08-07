@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import '../css/Header.css'; // CSS 파일 임포트
+import '../css/Header.css';
+import { AuthContext } from '../contexts/AuthContext';
 
 function Header() {
+  const {user, logout} = useContext(AuthContext);
+
   return (
     <header className="header">
       <div className="logo-container">
@@ -11,8 +14,17 @@ function Header() {
         </Link>
       </div>
       <div className="auth-links">
-        <Link to="/login" className="auth-link">로그인</Link>
-        <Link to="/signup" className="auth-link">회원가입</Link>
+      {user ? (
+          <>
+            <span className="username">{user.email}</span>
+            <button onClick={logout} className="auth-link">로그아웃</button>
+          </>
+        ) : (
+          <>
+            <Link to="/login" className="auth-link">로그인</Link>
+            <Link to="/signup" className="auth-link">회원가입</Link>
+          </>
+        )}
       </div>
     </header>
   );
