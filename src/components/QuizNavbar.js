@@ -38,7 +38,7 @@ function QuizNavbar() {
             </li>
             <li className="quiz-navbar-item">
               <Link
-                to="/quiz/update">
+                to="/quiz/delete">
                 퀴즈삭제
               </Link>
             </li>

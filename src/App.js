@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import { AuthProvider } from './contexts/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 // 공지사항 페이지
@@ -34,10 +35,12 @@ function App() {
             <Route path="/notice" element={<Notice />} />
 
             <Route path="/quiz" element={<Quiz />} />
-            <Route path="/quiz/create" element={<QuizCreate />} />
+            <Route path="/quiz/create" element={<ProtectedRoute element={<QuizCreate />} />} />
             <Route path="/quiz/get/:id" element={<QuizDetail />} />
             <Route path="/quiz/category" element={<QuizCategory />} />
-            <Route path='/quiz/myResult' element={<QuizMyResult />} />
+            <Route path='/quiz/myResult' element={<ProtectedRoute element={<QuizMyResult />} />} />
+
+
 
             <Route path="/board" element={<Board />} />
         </Routes>

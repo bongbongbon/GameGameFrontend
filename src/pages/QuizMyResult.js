@@ -25,6 +25,7 @@ function QuizMyResult() {
         });
         if (response.data && response.data.data) {
             setResults(response.data.data.content);
+            console.log(response.data.data.content);
             setTotalPages(response.data.data.totalPages || 1);
         } else {
           setResults([]);
@@ -69,7 +70,7 @@ function QuizMyResult() {
                   <h3>{result.quizResponse.title}</h3>
                   <p>{result.quizResponse.content}</p>
                   <p>내가 쓴 답: {result.userAnswer || '답 없음'}</p>
-                  <p>퀴즈결과: {result.isCorrect ? "맞힌문제" : "틀린문제"}</p>
+                  <p>퀴즈결과: {result.isCorrect ? "O" : "X"}</p>
                 </Link>
               </div>
             ))}

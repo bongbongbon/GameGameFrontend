@@ -1,13 +1,13 @@
 // src/components/QuizDetail.js
 
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import QuizNavbar from '../components/QuizNavbar';
 import '../css/QuizDetail.css';
-import { useNavigate } from 'react-router-dom'; // useNavigate 훅을 import합니다.
 import axiosInstance from '../contexts/axiosInstance';
+import { AuthContext } from '../contexts/AuthContext'; // Import AuthContext
 
 
 function QuizDetail() {
@@ -17,6 +17,8 @@ function QuizDetail() {
   const [error, setError] = useState(null); // 오류 상태
   const [submittedAnswer, setSubmittedAnswer] = useState(''); // 사용자가 제출한 답변
   const navigate = useNavigate(); // useNavigate 훅을 호출합니다.
+  const { user } = useContext(AuthContext); // AuthContext를 사용하여 사용자 정보를 가져옵니다.
+
 
 
   useEffect(() => {
@@ -36,6 +38,13 @@ function QuizDetail() {
   }, [id]); // id가 변경될 때마다 실행
 
   const handleAnswerSubmit = async () => {
+
+    if (!user) { // 사용자 인증 확인
+      alert('로그인이 필요한 기능입니다.');
+      navigate('/login'); // 로그인 페이지로 리디렉션
+      return;
+    }
+
     try {
       const response = await axiosInstance.post(`/api/quizzes/checkAnswer`, {
         quizId: id,
@@ -43,10 +52,10 @@ function QuizDetail() {
       });
 
       if (response.data.data === true) {
-        alert("정답입니다.")
-        navigate("/quiz")
+        alert("정답입니다.");
+        navigate("/quiz");
       } else {
-        alert("틀렸습니다.")
+        alert("틀렸습니다.");
       }
     } catch (error) {
       setError(error.message); // 오류 상태 업데이트
