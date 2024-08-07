@@ -16,8 +16,8 @@ function Header() {
       <div className="auth-links">
       {user ? (
           <>
-            <span className="username">{user.email}</span>
-            <button onClick={logout} className="auth-link">로그아웃</button>
+            <span className="username">{user}</span>
+            <button onClick={logout} className="logout-button">로그아웃</button>
           </>
         ) : (
           <>

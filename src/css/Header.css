@@ -36,6 +36,8 @@
   .auth-links {
     display: flex;
     gap: 15px; /* 로그인과 회원가입 버튼 사이의 간격 */
+    align-items: center; /* 세로 가운데 정렬 */
+
   }
   
   .auth-link {
@@ -56,3 +58,22 @@
     background-color: #555; /* 클릭 시 배경색 */
   }
   
+  .logout-button {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 8px 16px; /* 버튼의 패딩 */
+    border-radius: 5px; /* 버튼의 모서리 둥글게 */
+    transition: background-color 0.3s, color 0.3s; /* 배경색과 텍스트 색상 전환 */
+  }
+  
+  .logout-button:hover {
+    background-color: #444; /* 호버 시 배경색 */
+    color: #ffffff; /* 호버 시 텍스트 색상 */
+  }
+  
+  .logout-button:active {
+    background-color: #555; /* 클릭 시 배경색 */
+  }
