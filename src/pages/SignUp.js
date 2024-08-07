@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 
 import '../css/SignUp.css'
 import Navbar from '../components/Navbar';
@@ -11,12 +11,8 @@ function SignUp() {
   const [password, setPassword] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
   const [nickname, setNickname] = useState('');
-  const [profileImage, setProfileImage] = useState(null); // Initialize as null
-  const [message, setMessage] = useState('');
-  const [verificationCode, setVerificationCode] = useState('');
-  const [isCodeSent, setIsCodeSent] = useState(false);
-  const [isVerified, setIsVerified] = useState(false);
-  const navigate = useNavigate();
+
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -71,7 +67,7 @@ function SignUp() {
 
         <button type="submit" className='signup-button'>완료</button>
       </form>
-      <p>{message}</p>
+
     </div>
 
     </div>
