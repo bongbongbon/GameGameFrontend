@@ -15,8 +15,10 @@ import SignUp from './pages/SignUp';
 import Quiz from './pages/Quiz';
 import QuizCreate from './pages/QuizCreate';
 import QuizDetail from './pages/QuizDetail';
+import QuizUpdate from './pages/QuizUpdate';
 import QuizCategory from './pages/QuizCategory';
-import QuizMyResult from './pages/QuizMyResult';
+import QuizMyResults from './pages/QuizMyResults';
+import QuizMyQuizzes from './pages/QuizMyQuizzes';
 
 // 게임게시판 페이지
 import Board from './pages/Board';
@@ -37,8 +39,10 @@ function App() {
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/quiz/create" element={<ProtectedRoute element={<QuizCreate />} />} />
             <Route path="/quiz/get/:id" element={<QuizDetail />} />
+            <Route path="/quiz/update/:id" element={<QuizUpdate />} />
             <Route path="/quiz/category" element={<QuizCategory />} />
-            <Route path='/quiz/myResult' element={<ProtectedRoute element={<QuizMyResult />} />} />
+            <Route path='/quiz/myresults' element={<ProtectedRoute element={<QuizMyResults />} />} />
+            <Route path='/quiz/myquizzes' element={<ProtectedRoute element={<QuizMyQuizzes />} />} />
 
 
 

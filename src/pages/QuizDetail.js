@@ -62,6 +62,22 @@ function QuizDetail() {
     }
   };
 
+  const handleEdit = () => {
+    navigate(`/quiz/update/${id}`);
+  };
+
+  const handleDelete = async () => {
+    if (window.confirm("정말로 삭제하시겠습니까?")) {
+      try {
+        await axiosInstance.delete(`/api/quizzes/delete/${id}`);
+        alert("삭제되었습니다.");
+        navigate("/quiz/myquizzes");
+      } catch (error) {
+        setError(error.message); // 오류 상태 업데이트
+      }
+    }
+  };
+
   if (loading) return <p>로딩 중...</p>;
   if (error) return <p>오류 발생: {error}</p>;
   if (!quiz) return <p>퀴즈 정보를 찾을 수 없습니다.</p>;
@@ -80,8 +96,10 @@ function QuizDetail() {
       <div className='quiz-detail-content'>
       <div className='quiz-detail-card'>
             <div className='quiz-container'>
-                <p>카테고리: {quiz.category}</p>
-                <p>조회수: {quiz.views}</p>
+            <div className="category-views-container">
+              <p>카테고리: {quiz.category}</p>
+              <p>조회수: {quiz.views}</p>
+            </div>
               <h1>질문: {quiz.content}</h1>
             </div>
         </div>
@@ -98,6 +116,16 @@ function QuizDetail() {
         >
           정답 제출
         </button>
+        {user === quiz.username && ( // 현재 사용자와 퀴즈 소유자를 비교합니다.
+          <div className="edit-delete-container">
+            <button onClick={handleEdit} className="edit-button">
+              수정
+            </button>
+            <button onClick={handleDelete} className="delete-button">
+              삭제
+            </button>
+          </div>
+        )}
       </div>
         </div>
     </div>

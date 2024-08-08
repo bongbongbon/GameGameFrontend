@@ -13,6 +13,14 @@
     margin-bottom: 10px;
   }
   
+
+
+.category-views-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
   .quiz-detail-card {
     background-color: #f8f9fa;
     border: 1px solid #dee2e6;
@@ -75,3 +83,27 @@
     color: #dc3545;
   }
   
+  .edit-delete-container {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  
+  .edit-button, .delete-button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .edit-button {
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .delete-button {
+    border-radius: 4px;
+    background-color: #f44336;
+    color: white;
+  }

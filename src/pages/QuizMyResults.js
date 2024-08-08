@@ -6,7 +6,7 @@ import '../css/Quiz.css';
 import { Link } from 'react-router-dom';
 import axiosInstance from '../contexts/axiosInstance';
 
-function QuizMyResult() {
+function QuizMyResults() {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -124,4 +124,4 @@ function QuizMyResult() {
   );
 }
 
-export default QuizMyResult;
+export default QuizMyResults;

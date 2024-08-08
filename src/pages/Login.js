@@ -61,9 +61,6 @@ function Login() {
             />
           </div>
           <div>
-            <p className='password-reset-link clickable' onClick={() => handlePageChange('/password-reset')}>
-              비밀번호 재설정
-            </p>
           </div>
           <button type="submit" className='login-button'>로그인</button>
         </form>
