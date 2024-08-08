@@ -17,7 +17,6 @@ function QuizUpdate() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const [updateQuiz, setUpdateQuiz] = useState(null);
 
   const categories = ['롤', '오버워치', '피파온라인', '스타크래프트', '기타'];
 
@@ -57,6 +56,7 @@ function QuizUpdate() {
         }
       });
       alert("퀴즈가 업데이트되었습니다.");
+      console.log(response.data.data);
       navigate('/quiz'); // 퀴즈가 업데이트된 후 /quiz로 이동합니다.
     } catch (error) {
       console.log(error);
