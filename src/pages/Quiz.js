@@ -27,12 +27,12 @@ function Quiz() {
         });
 
         // 서버 응답 로그 출력
-        console.log(response.data);
+        console.log(response.data.data);
 
         // 데이터 검증 및 상태 업데이트
         if (response.data && response.data.data) {
           setQuizzes(Array.isArray(response.data.data.content) ? response.data.data.content : []);
-          setTotalPages(response.data.data.totalPages || 1);
+          setTotalPages(response.data.data.page.totalPages || 1);
         } else {
           setQuizzes([]);
           setTotalPages(1);

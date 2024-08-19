@@ -26,7 +26,7 @@ function QuizMyResults() {
         if (response.data && response.data.data) {
             setResults(response.data.data.content);
             console.log(response.data.data.content);
-            setTotalPages(response.data.data.totalPages || 1);
+            setTotalPages(response.data.data.page.totalPages || 1);
         } else {
           setResults([]);
           setTotalPages(1);
