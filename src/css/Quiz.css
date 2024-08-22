@@ -24,6 +24,11 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
+.quiz-card h1 {
+  text-align: center;
+  
+}
+
 .quiz-card h3 {
   margin-top: 0;
   font-size: 1.5em;
@@ -31,6 +36,8 @@
   overflow: hidden; /* 넘치는 텍스트 숨기기 */
   text-overflow: ellipsis; /* 넘치는 텍스트에 ... 추가 */
 }
+
+
 
 .quiz-card p {
   white-space: nowrap; /* 텍스트를 한 줄로 표시 */
@@ -80,3 +87,6 @@
   cursor: pointer; /* 클릭 가능한 커서로 변경 */
   /* 여기에 추가 스타일을 작성하세요 */
 }
+
+
+
