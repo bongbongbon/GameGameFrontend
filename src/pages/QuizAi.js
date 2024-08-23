@@ -12,7 +12,8 @@ function QuizAi() {
   const [inputText, setInputText] = useState('');
   const [responseText, setResponseText] = useState('');
   const [loading, setLoading] = useState(false);
-  const genAI = new GoogleGenerativeAI('AIzaSyBInJ-RGa49RYukD-vnTY-hK8MpnS6E3_0');
+  const apiKey = process.env.REACT_APP_GOOGLE_AI_API_KEY;
+  const genAI = new GoogleGenerativeAI(apiKey);
 
   const handleSubmit = async () => {
 
@@ -24,7 +25,6 @@ function QuizAi() {
         const result = await model.generateContent(inputText);
         const response = result.response;
         const text = response.text();
-        
         setResponseText(text);
     } catch (error) {
       console.error('Error sending request:', error);
@@ -66,16 +66,16 @@ function QuizAi() {
             />
                   <button onClick={handleSubmit} className="quizAi-button">질문하기</button>
 
-      {responseText && (
-        <div className='response-text'>
-          <h2>응답 결과:</h2>
-          <pre>{responseText}</pre>
-        </div>
-      )}
+            {loading && <p>요청 처리 중...</p>}
+
+
+          {responseText && (
+            <div className='response-text'>
+              <h2>응답 결과:</h2>
+              <pre>{responseText}</pre>
+            </div>
+          )}
           </div>
-
-      {loading && <p>요청 처리 중...</p>}
-
     </div>
   );
 };
