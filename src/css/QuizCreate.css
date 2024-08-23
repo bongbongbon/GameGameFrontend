@@ -7,6 +7,10 @@
 .quiz-create-content {
     width: 80%;
     margin: 0 auto;
+    padding: 20px; /* 외부 여백 설정 */
+    background-color: #f9f9f9; /* 배경색 설정 */
+    border-radius: 10px; /* 컨텐츠 모서리 둥글게 설정 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
   }
   
 
@@ -37,6 +41,8 @@
   .quiz-create-form-group textarea {
     resize: vertical; /* 세로로만 크기 조절 가능 */
     min-height: 100px;
+    resize: none; /* 사용자가 텍스트 영역 크기를 조정할 수 없도록 설정 */
+
   }
   
   .quiz-create-submit-button {

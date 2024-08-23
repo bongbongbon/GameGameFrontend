@@ -13,6 +13,7 @@ import SignUp from './pages/SignUp';
 
 // 퀴즈 페이지
 import Quiz from './pages/Quiz';
+import QuizAi from './pages/QuizAi';
 import QuizCreate from './pages/QuizCreate';
 import QuizDetail from './pages/QuizDetail';
 import QuizUpdate from './pages/QuizUpdate';
@@ -43,7 +44,7 @@ function App() {
             <Route path="/quiz/category" element={<QuizCategory />} />
             <Route path='/quiz/myresults' element={<ProtectedRoute element={<QuizMyResults />} />} />
             <Route path='/quiz/myquizzes' element={<ProtectedRoute element={<QuizMyQuizzes />} />} />
-
+            <Route path='/quiz/ai' element={<ProtectedRoute element={<QuizAi />} />} />
 
 
             <Route path="/board" element={<Board />} />

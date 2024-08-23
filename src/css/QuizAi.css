@@ -1,0 +1,62 @@
+.quizAi-content {
+    max-width: 80%; /* 컨텐츠의 최대 너비 설정 */
+    margin: 0 auto; /* 화면 중앙 정렬 */
+    padding: 20px; /* 외부 여백 설정 */
+    background-color: #f9f9f9; /* 배경색 설정 */
+    border-radius: 10px; /* 컨텐츠 모서리 둥글게 설정 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+  }
+  
+  .question-input {
+    width: 100%; /* 입력 필드가 부모 요소의 너비를 가득 채우도록 설정 */
+    padding: 15px; /* 내부 여백 설정 */
+    font-size: 1.2em; /* 글꼴 크기 설정 */
+    border: 1px solid #ccc; /* 경계선 설정 */
+    border-radius: 8px; /* 모서리 둥글게 설정 */
+    box-sizing: border-box; /* 패딩을 포함한 전체 크기 조정 */
+    margin-bottom: 20px; /* 하단 여백 설정 */
+    height: 200px; /* 높이 설정 */
+    resize: none; /* 사용자가 텍스트 영역 크기를 조정할 수 없도록 설정 */
+
+  }
+  
+  .question-input:focus {
+    outline: none; /* 포커스 시 기본 윤곽선 제거 */
+    border-color: #007bff; /* 포커스 시 경계선 색상 변경 */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2); /* 포커스 시 그림자 추가 */
+  }
+  
+  .quizAi-button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    
+  }
+  
+ .quizAi-button:hover {
+    background-color: #555;
+  }
+
+  /* 응답 내용 스타일 */
+.response-text {
+    margin-top: 20px; /* 상단 여백 설정 */
+  }
+  
+  .response-text h2 {
+    font-size: 1.5em; /* 제목 글꼴 크기 설정 */
+    margin-bottom: 10px; /* 제목 하단 여백 설정 */
+  }
+  
+  .response-text pre {
+    background-color: #e9ecef; /* 배경색 설정 */
+    padding: 15px; /* 내부 여백 설정 */
+    border-radius: 8px; /* 모서리 둥글게 설정 */
+    white-space: pre-wrap; /* 줄 바꿈을 유지하며 공백을 그대로 표시 */
+    overflow-x: auto; /* 긴 텍스트가 넘어갈 경우 수평 스크롤 추가 */
+    font-size: 1em; /* 글꼴 크기 설정 */
+  }

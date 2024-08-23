@@ -30,6 +30,12 @@ function QuizNavbar() {
                 내가 만든 퀴즈
               </Link>
             </li>
+            <li className="quiz-navbar-item">
+              <Link
+                to="/quiz/ai">
+                AI 질문하기
+              </Link>
+            </li>
  
           </ul>
         </nav>
