@@ -60,6 +60,7 @@ function QuizMyResults() {
       <div className="quiz-content">
         {loading && <p className="loading-message">로딩 중...</p>}
         {error && <p className="error-message">오류 발생: {error}</p>}
+        <h2>내퀴즈 결과</h2>
 
         {!loading && !error && results.length > 0 && (
           <div className="quiz-list">

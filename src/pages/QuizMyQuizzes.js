@@ -66,9 +66,10 @@ function QuizMyQuizzes() {
       </div>
       
       <div className="quiz-content">
-        
+
         {loading && <p className="loading-message">로딩 중...</p>}
         {error && <p className="error-message">오류 발생: {error}</p>}
+        <h2>내가 만든 퀴즈</h2>
 
         {!loading && !error && quizzes.length > 0 && (
           <div className="quiz-list">
