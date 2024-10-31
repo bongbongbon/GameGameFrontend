@@ -21,6 +21,19 @@ import QuizCategory from './pages/QuizCategory';
 import QuizMyResults from './pages/QuizMyResults';
 import QuizMyQuizzes from './pages/QuizMyQuizzes';
 
+// 팀 게시판
+import Team from './pages/team/Team';
+import Sidejob from './pages/team/Sidejob';
+import ShortProject from './pages/team/ShortProject';
+import Competition from './pages/team/Competition';
+import Hackathon from './pages/team/Hackathon';
+
+import Member from './pages/member/Member';
+
+
+
+
+
 // 게임게시판 페이지
 import Board from './pages/Board';
 
@@ -45,6 +58,14 @@ function App() {
             <Route path='/quiz/myresults' element={<ProtectedRoute element={<QuizMyResults />} />} />
             <Route path='/quiz/myquizzes' element={<ProtectedRoute element={<QuizMyQuizzes />} />} />
             <Route path='/quiz/ai' element={<ProtectedRoute element={<QuizAi />} />} />
+
+            <Route path="/team" element={<Team />} />
+            <Route path="/team/sidejob" element={<Sidejob />} />
+            <Route path="/team/shortproject" element={<ShortProject />} />
+            <Route path="/team/competition" element={<Competition />} />
+            <Route path="/team/hackathon" element={<Hackathon />} />
+
+            <Route path="/member" element={<Member />} />
 
 
             <Route path="/board" element={<Board />} />

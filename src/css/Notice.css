@@ -1,0 +1,29 @@
+.notice-content {
+    padding: 20px;
+    background-color: #f9f9f9; /* 부드러운 배경색 */
+    font-size: 1rem;
+    color: #333;
+    border-radius: 8px; /* 모서리 둥글게 */
+    margin: 20px auto;
+
+    max-width: 1200px; /* 최대 넓이 제한 */
+  }
+  
+  .notice-content ul {
+    list-style-type: none; /* 기본 불릿 제거 */
+    padding: 0;
+  }
+  
+  .notice-content li {
+    background-color: #90dc1e; /* 리스트 아이템 배경색 */
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease; /* 호버 애니메이션 */
+  }
+  
+  .notice-content li:hover {
+    background-color: #76b814; /* 호버 시 색상 변경 */
+  }
+  

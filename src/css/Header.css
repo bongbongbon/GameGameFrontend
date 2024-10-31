@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
+    background-color: #90DC1E;
     padding: 10px 20px;
     color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -19,7 +19,7 @@
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #ffffff;
+    color: #444;
   }
   
   .logo-image {
@@ -42,7 +42,7 @@
   
   .auth-link {
     text-decoration: none;
-    color: #ffffff;
+    color: #444;
     font-size: 1rem; /* 버튼의 텍스트 크기 */
     padding: 8px 16px; /* 버튼의 패딩 */
     border-radius: 5px; /* 버튼의 모서리 둥글게 */
@@ -50,14 +50,10 @@
   }
   
   .auth-link:hover {
-    background-color: #444; /* 호버 시 배경색 */
     color: #ffffff; /* 호버 시 텍스트 색상 */
   }
   
-  .auth-link:active {
-    background-color: #555; /* 클릭 시 배경색 */
-  }
-  
+
   .logout-button {
     background-color: transparent;
     border: none;
@@ -74,6 +70,3 @@
     color: #ffffff; /* 호버 시 텍스트 색상 */
   }
   
-  .logout-button:active {
-    background-color: #555; /* 클릭 시 배경색 */
-  }
