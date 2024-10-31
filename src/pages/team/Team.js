@@ -33,19 +33,7 @@ function Team() {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = mockData.slice(indexOfFirstItem, indexOfLastItem);
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const handlePreviousPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
+  
   const handlePageClick = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -64,7 +52,7 @@ function Team() {
       
       <div className="team-content">
         <div className='team-container'>
-          <h2>전체 팀</h2>        
+          <h2>전체</h2>        
         <div className="team-list">
           {currentItems.map((item, index) => (
             <div key={index} className="team-card">

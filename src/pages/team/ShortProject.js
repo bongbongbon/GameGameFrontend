@@ -34,17 +34,6 @@ function ShortProject() {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = mockData.slice(indexOfFirstItem, indexOfLastItem);
 
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const handlePreviousPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
 
   const handlePageClick = (pageNumber) => {
     setCurrentPage(pageNumber);
