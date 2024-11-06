@@ -88,5 +88,11 @@
   /* 여기에 추가 스타일을 작성하세요 */
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 
 

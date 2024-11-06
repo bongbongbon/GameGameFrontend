@@ -1,0 +1,84 @@
+/* UserDelete.css */
+.user-delete-page {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+}
+
+.header-container {
+    width: 100%;
+}
+
+.user-delete-content {
+    display: flex; /* 좌우 레이아웃 설정 */
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* UserMenubar를 왼쪽에 고정 */
+.user-menubar-container {
+    width: 250px; /* 원하는 너비로 설정 */
+    margin-right: 20px; /* 오른쪽 여백 추가 */
+    margin-left: 20px;
+}
+
+/* 삭제 폼을 오른쪽에 배치 */
+.user-delete-container {
+    flex: 1; /* 남은 공간을 모두 차지 */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+}
+
+.user-delete-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.user-delete-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-delete-info-item {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.user-delete-email-input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.user-delete-button {
+    padding: 10px 20px;
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.user-delete-button:hover {
+    background-color: #e04344;
+}
+
+.message {
+    margin-top: 15px;
+    color: #e04344;
+    font-size: 14px;
+    text-align: center;
+}

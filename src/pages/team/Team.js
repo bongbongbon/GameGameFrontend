@@ -1,42 +1,70 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axiosInstance from '../../contexts/axiosInstance';
 import Navbar from '../../components/Navbar';
 import Header from '../../components/Header';
 import TeamNavbar from '../../components/TeamNavbar';
-import '../../css/Team.css'
-
-const mockData = [
-  { title: "팀 프로젝트 1", description: "설명 1" },
-  { title: "팀 프로젝트 2", description: "설명 2" },
-  { title: "팀 프로젝트 3", description: "설명 3" },
-  { title: "팀 프로젝트 4", description: "설명 4" },
-  { title: "팀 프로젝트 5", description: "설명 5" },
-  { title: "팀 프로젝트 6", description: "설명 6" },
-  { title: "팀 프로젝트 7", description: "설명 7" },
-  { title: "팀 프로젝트 8", description: "설명 8" },
-  { title: "팀 프로젝트 9", description: "설명 9" },
-  { title: "팀 프로젝트 10", description: "설명 10" },
-  { title: "팀 프로젝트 10", description: "설명 11" },
-  { title: "팀 프로젝트 10", description: "설명 12" },
-  { title: "팀 프로젝트 10", description: "설명 13" },
-
-  // ... (더 많은 항목 추가 가능)
-];
+import '../../css/Team.css';
+import { Link } from 'react-router-dom';
 
 function Team() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+  const [teams, setTeams] = useState([]); 
+  const [currentPage, setCurrentPage] = useState(1); 
+  const [totalPages, setTotalPages] = useState(1); 
+  const [totalElements, setTotalElements] = useState(); 
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null); 
+  const [searchTerm, setSearchTerm] = useState(""); 
+  const [sortOption, setSortOption] = useState("최신순"); 
+  const teamsPerPage = 9; 
+  const maxPageButtons = 10; // 한 번에 표시할 최대 페이지 버튼 수
 
-  // Calculate the total number of pages
-  const totalPages = Math.ceil(mockData.length / itemsPerPage);
+  const fetchTeams = async () => {
+    try {
+      const response = await axiosInstance.get('/api/v1/teams/search', {
+        params: {
+          page: currentPage, 
+          size: teamsPerPage,
+          searchTerm: searchTerm, 
+          sortOption: sortOption,
+        }
+      });
 
-  // Get current items based on the current page
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = mockData.slice(indexOfFirstItem, indexOfLastItem);
-  
-  const handlePageClick = (pageNumber) => {
-    setCurrentPage(pageNumber);
+      console.log(sortOption);
+      console.log(response.data.data);
+
+      if (response.data && response.data.data) {
+        setTeams(Array.isArray(response.data.data.content) ? response.data.data.content : []);
+        setTotalPages(response.data.data.page.totalPages);
+        setTotalElements(response.data.data.page.totalElements);
+      } else {
+        setTeams([]);
+      }
+    } catch (error) {
+      setError(error.message); 
+    } finally {
+      setLoading(false); 
+    }
   };
+
+  const handlePageChange = (pageNumber) => {
+      // Ensure the page number stays within the valid range
+  if (pageNumber >= 1 && pageNumber <= totalPages) {
+    setCurrentPage(pageNumber);
+  }
+  };
+
+  const handleSearch = () => {
+    setCurrentPage(1); 
+    fetchTeams(); 
+  };
+
+  useEffect(() => {
+    fetchTeams(); 
+  }, [currentPage, sortOption]); 
+
+  // 시작 페이지와 끝 페이지 계산
+  const startPage = Math.floor((currentPage - 1) / maxPageButtons) * maxPageButtons + 1;
+  const endPage = Math.min(startPage + maxPageButtons - 1, totalPages);
 
   return (
     <div className="team-page">
@@ -47,54 +75,84 @@ function Team() {
         <Navbar />
       </div>
       <div className='teamNavbar-container'>
-        <TeamNavbar />
+        <TeamNavbar 
+          searchTerm={searchTerm} 
+          setSearchTerm={setSearchTerm} 
+          sortOption={sortOption}
+          setSortOption={setSortOption}
+          onSearch={handleSearch} 
+        />
       </div>
       
       <div className="team-content">
         <div className='team-container'>
-          <h2>전체</h2>        
-        <div className="team-list">
-          {currentItems.map((item, index) => (
-            <div key={index} className="team-card">
-              <h3 className="team-card-title">{item.title}</h3>
-              <p className="team-card-description">{item.description}</p>
-            </div>
-          ))}
+          <h2>전체 팀</h2>        
+          <p>{totalElements} 개의 팀이 검색되었습니다.</p>
+          <div className="team-list">
+          {loading ? (
+                <p className='loading-message'>로딩 중...</p>
+              ) : teams.length === 0 ? (
+                <p className="no-teams-message">팀이 없습니다.</p>
+              ) : (
+        teams.map(team => (
+          <div className="team-card" key={team.id}>
+            <Link to={`/team/${team.id}`} className="team-link">
+              <span className="team-category">{team.teamCategory}</span>
+              <p className="team-domain">{team.domain}</p>
+              <h3 className="team-title">{team.title}</h3>
+              <p className="team-description">{team.description}</p>
+              <p className="team-member-number">팀원 수: {team.memberNumber}명</p>
+              <p className="team-recruitment">모집 기간: <strong>{team.recruitmentStartDate} - {team.recruitmentEndDate}</strong></p>
+              <p className="team-project">프로젝트 기간: <strong>{team.projectStartDate} - {team.projectEndDate}</strong></p>
+            </Link>
+          </div>
+        ))
+      )}
+          </div>
         </div>
+
         <div className="pagination">
-        <button
+          <button
             className="page-button"
+            disabled={currentPage === 1}
+            onClick={() => handlePageChange(1)}
           >
             처음
           </button>
           <button
             className="page-button"
+            disabled={currentPage === 1}
+            onClick={() => handlePageChange(currentPage - 1)}
           >
             이전
           </button>
-          {Array.from({ length: totalPages }, (_, index) => (
-            <div
-              key={index}
-              className={`page-tile ${currentPage === index + 1 ? 'active' : ''}`}
-              onClick={() => handlePageClick(index + 1)}
+
+          {Array.from({ length: endPage - startPage + 1 }, (_, i) => (
+            <button
+              key={startPage + i}
+              className={`page-button ${currentPage === startPage + i ? 'active' : ''}`}
+              onClick={() => handlePageChange(startPage + i)}
             >
-              {index + 1}
-            </div>
+              {startPage + i}
+            </button>
           ))}
-                  <button
+
+          <button
             className="page-button"
+            disabled={currentPage === totalPages}
+            onClick={() => handlePageChange(currentPage + 1)}
           >
             다음
           </button>
           <button
             className="page-button"
+            disabled={currentPage === totalPages}
+            onClick={() => handlePageChange(totalPages)}
           >
             마지막
           </button>
         </div>
-
       </div>
-    </div>
     </div>
   );
 }

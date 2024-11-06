@@ -53,20 +53,22 @@
     color: #ffffff; /* 호버 시 텍스트 색상 */
   }
   
+  .user-email {
+    color: #444;
+    cursor: pointer;
+  }
 
   .logout-button {
     background-color: transparent;
     border: none;
-    color: #ffffff;
+    color: #333;
     font-size: 1rem;
     cursor: pointer;
     padding: 8px 16px; /* 버튼의 패딩 */
-    border-radius: 5px; /* 버튼의 모서리 둥글게 */
     transition: background-color 0.3s, color 0.3s; /* 배경색과 텍스트 색상 전환 */
   }
   
   .logout-button:hover {
-    background-color: #444; /* 호버 시 배경색 */
     color: #ffffff; /* 호버 시 텍스트 색상 */
   }
   

@@ -1,3 +1,4 @@
+
 .login-content {
     width: 100%;
     max-width: 400px;
@@ -7,6 +8,7 @@
     border-radius: 5px;
     background-color: hsl(0, 0%, 98%);
     margin-top: 100px;
+
   }
   
   .login-content h2 {
@@ -38,6 +40,8 @@
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-sizing: border-box;
+
   }
   
 
@@ -48,7 +52,7 @@
 .login-button {
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: #90DC1E;
   color: white;
   border: none;
   border-radius: 5px;
@@ -58,7 +62,7 @@
 }
 
 .login-button:hover {
-  background-color: #0056b3;
+  background-color: #477109;
 }
 
 .login-button:active {

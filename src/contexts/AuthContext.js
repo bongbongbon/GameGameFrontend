@@ -1,66 +1,76 @@
-// src/contexts/AuthContext.js
-
 import React, { createContext, useState, useEffect } from 'react';
 import axiosInstance from '../contexts/axiosInstance';
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
+  const [token, setToken] = useState(localStorage.getItem('token') || null);
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null); 
 
-
-  useEffect(() => {
-    const fetchUser = async (token) => {
-      try {
-        const response = await axiosInstance.post('/api/auth/me', {}, {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        });
-        console.log(response.data);
-        setUser(response.data);
-      } catch (error) {
-        console.error('Failed to fetch current user:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    const token = localStorage.getItem('token');
-    if (token) {
-      fetchUser(token);
-    } else {
-      setLoading(false);
-    }
-  }, []);
-
+  // 로그인 함수
   const login = async (email, password) => {
     try {
-      const response = await axiosInstance.post('/api/auth/login', { email, password });
-      localStorage.setItem('token', response.data.token);
+      const response = await axiosInstance.post('/api/v1/auth/login', { email, password });
+      const token = response.data.data.accessToken;
+      localStorage.setItem('token', token);
+      setToken(token);
     } catch (error) {
       throw error;
     }
   };
 
-
-  const logout = () => {
-    localStorage.removeItem('token');
-    setUser(null);
-    window.location.href = '/'; // 로그인 페이지로 리다이렉트
+  // 회원가입 함수
+  const signup = async (email, password, passwordCheck, nickName, phoneNumber, userRole) => {
+    try {
+      const response = await axiosInstance.post('/api/v1/auth/signUp', {
+        email,
+        password,
+        passwordCheck,
+        nickName,
+        phoneNumber,
+        userRole,
+      });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
   };
 
-  // 새로고침 시에 로그인과 회원가입 버튼이 잠깐씩 보이는 문제는, user 상태가 로드되기 전에 렌더링이 이루어지기 때문입니다.
-  // 이 문제를 해결하기 위해 로딩 상태를 추가하고, user 상태가 null이 아닌지 확인한 후에 렌더링을 하도록 수정할 수 있습니다.
-  
+  const fetchUser = async() => {
+    if(token) {
+      try {
+        const response = await axiosInstance.get(`/api/v1/auth`);
+        setUser(response.data.data);
+        console.log(response.data.data);
+    } catch (error) {
+        setError(error.message); // 오류 상태 업데이트
+    } finally {
+        setLoading(false); // 로딩 완료
+    }
+    }
+  };
 
-  if (loading) {
-    return null; // 새로고침 하면 로그인 회원가입 버튼이 왔다갔다하는 현상 때문에 설정
-  }
+    // 초기화: token이 있을 경우 유저 정보 가져오기
+    useEffect(() => {
+      if (token) {
+        fetchUser(token);
+      } else {
+        setLoading(false);
+      }
+    }, [token]);
+
+
+  // 로그아웃 함수
+  const logout = () => {
+    localStorage.removeItem('token');
+    setToken(null);
+    setUser(null);
+  };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ token, user, login, signup, logout }}>
       {children}
     </AuthContext.Provider>
   );

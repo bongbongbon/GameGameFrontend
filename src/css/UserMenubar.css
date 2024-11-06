@@ -1,0 +1,61 @@
+/* UserMenubar.css */
+
+/* 메뉴바 컨테이너 */
+.user-menubar {
+    width: 200px; /* 원하는 너비로 설정 */
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* 메뉴 목록 스타일 */
+  .user-menubar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* 메인 메뉴 스타일 */
+  .user-menubar-mainmenu {
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  
+  .user-menubar-mainmenu:hover {
+    color: #90DC1E;
+  }
+  
+  /* 서브메뉴 컨테이너 */
+  .user-menubar-submenu {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 10px 20px; /* 들여쓰기 적용 */
+    border-left: 2px solid #e0e0e0;
+  }
+  
+  /* 서브메뉴 항목 스타일 */
+  .user-menubar-submenu li {
+    margin: 5px 0;
+  }
+  
+  .user-menubar-submenu a {
+    font-size: 14px;
+    color: #555;
+    text-decoration: none;
+    padding: 5px;
+    display: block;
+    transition: color 0.2s ease;
+  }
+  
+  .user-menubar-submenu a:hover {
+    color: #76b814;
+  }
+
+  

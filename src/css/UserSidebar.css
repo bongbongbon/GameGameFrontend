@@ -1,0 +1,106 @@
+.user-sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px; /* 사이드바가 화면 오른쪽에서 300px 떨어져 시작 */
+    width: 250px; /* 사이드바 너비를 300px로 변경 */
+    height: 100%;
+    background-color: white; /* 배경색을 흰색으로 설정 */
+    color: #333; /* 글자 색상을 어두운 색으로 설정 */
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .user-sidebar.open {
+    right: 0; /* 사이드바가 열릴 때 오른쪽 위치를 0으로 설정 */
+  }
+  
+  .user-sidebar-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .user-sidebar-close-button {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  
+  .user-sidebar-profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .user-profile {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* 원형 프로필 사진 */
+    margin-right: 15px; /* 프로필 사진과 텍스트 간 간격 */
+  }
+  
+  .user-profile-info {
+    display: flex;
+    flex-direction: column; /* 수직 정렬 */
+  }
+  
+  .user-nickname {
+    font-weight: bold; /* 별명 강조 */
+    color: #333; /* 별명 색상 */
+  }
+  
+  .guest-message {
+    font-size: 14px;
+    color: #333; /* 회색 글자 */
+  }
+  
+  .user-sidebar-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .user-sidebar-list li {
+    margin: 15px 0;
+  }
+  
+  .user-sidebar-list a {
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.2s;
+  }
+  
+  .user-sidebar-list a:hover {
+    color: #90DC1E; /* 마우스 오버 시 색상 변경 */
+  }
+  
+  /* UserSidebar.css */
+.user-sidebar-submenu {
+  margin-top: 5px;
+  margin-left: 15px;
+  list-style: none;
+  padding: 0;
+}
+
+.user-sidebar-submenu li {
+  padding: 5px 0;
+}
+
+.user-sidebar-mainmenu {
+  cursor: pointer;
+}
+

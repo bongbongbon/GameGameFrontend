@@ -35,15 +35,32 @@
     border-radius: 3px;
   }
   
-  .signup-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
+  .signup-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #90DC1E;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
   }
   
   .signup-button:disabled:hover {
     background-color: #ccc;
   }
+
+  .signup-button:hover {
+    background-color: #477109;
+  }
+  
+  .signup-button:active {
+    transform: scale(0.98);
+  }
   
   .clickable-home {
     cursor: pointer;
   }
+
+  

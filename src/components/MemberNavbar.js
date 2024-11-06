@@ -29,22 +29,22 @@ function MemberNavbar() {
           <Link to="/member">전체 멤버</Link>
         </li>
         <li className="team-navbar-item">
-          <Link to="/member/sidejob">웹 프론트</Link>
+          <Link to="/member/webfront">웹 프론트</Link>
         </li>
         <li className="team-navbar-item">
-          <Link to="/member/shortproject">웹 백엔드</Link>
+          <Link to="/member/webbackend">웹 백엔드</Link>
         </li>
         <li className="team-navbar-item">
-          <Link to="/member/competition">IOS</Link>
+          <Link to="/member/ios">IOS</Link>
         </li>
         <li className="team-navbar-item">
-          <Link to="/member/hackathon">안드로이드</Link>
+          <Link to="/member/android">안드로이드</Link>
         </li>
         <li className="team-navbar-item">
-          <Link to="/member/hackathon">하이브리드 앱</Link>
+          <Link to="/member/hybridapp">하이브리드 앱</Link>
         </li>
         <li className="team-navbar-item">
-          <Link to="/member/hackathon">게임 개발</Link>
+          <Link to="/member/gamedevelopment">게임 개발</Link>
         </li>
       </ul>
       <form onSubmit={handleSearchSubmit} className="team-search-form">

@@ -9,12 +9,12 @@
   .team-navbar-list {
     list-style: none;
     display: flex;
-    gap: 20px;
     margin: 0;
     padding: 0;
   }
   
   .team-navbar-item {
+    margin-left: 15px;
     font-size: 18px;
     font-weight: 500;
   }
@@ -61,6 +61,7 @@
     background-color: #76b814;
   }
   
+
   .team-sort-select {
     padding: 8px 12px;
     border: 1px solid #ccc;

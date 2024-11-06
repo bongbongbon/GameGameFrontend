@@ -1,10 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/Header.css';
 import { AuthContext } from '../contexts/AuthContext';
+import UserSidebar from './UserSidebar';
 
 function Header() {
-  const {user, logout} = useContext(AuthContext);
+  const { logout, user } = useContext(AuthContext);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // 사이드바 상태
+
+  // 사이드바 열기/닫기 토글 함수
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   return (
     <header className="header">
@@ -14,9 +21,9 @@ function Header() {
         </Link>
       </div>
       <div className="auth-links">
-      {user ? (
+        {user ? (
           <>
-            <span className="username">{user}</span>
+            <span className="user-email" onClick={toggleSidebar}>{user.email}</span>
             <button onClick={logout} className="logout-button">로그아웃</button>
           </>
         ) : (
@@ -26,6 +33,8 @@ function Header() {
           </>
         )}
       </div>
+      {/* 사이드바 컴포넌트에 상태 전달 */}
+      <UserSidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
     </header>
   );
 }
