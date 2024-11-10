@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useCallback } from 'react';
 import axiosInstance from '../contexts/axiosInstance';
 
 const AuthContext = createContext();
@@ -38,29 +38,29 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const fetchUser = async() => {
-    if(token) {
+  // 유저 정보 가져오기 함수
+  const fetchUser = useCallback(async () => {
+    if (token) {
       try {
         const response = await axiosInstance.get(`/api/v1/auth`);
         setUser(response.data.data);
         console.log(response.data.data);
-    } catch (error) {
+      } catch (error) {
         setError(error.message); // 오류 상태 업데이트
-    } finally {
+      } finally {
         setLoading(false); // 로딩 완료
-    }
-    }
-  };
-
-    // 초기화: token이 있을 경우 유저 정보 가져오기
-    useEffect(() => {
-      if (token) {
-        fetchUser(token);
-      } else {
-        setLoading(false);
       }
-    }, [token]);
+    }
+  }, [token]);
 
+  // 초기화: token이 있을 경우 유저 정보 가져오기
+  useEffect(() => {
+    if (token) {
+      fetchUser();
+    } else {
+      setLoading(false);
+    }
+  }, [token, fetchUser]);
 
   // 로그아웃 함수
   const logout = () => {
@@ -70,7 +70,7 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ token, user, login, signup, logout }}>
+    <AuthContext.Provider value={{ token, user, login, signup, logout, loading, error }}>
       {children}
     </AuthContext.Provider>
   );

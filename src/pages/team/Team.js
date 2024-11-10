@@ -59,13 +59,14 @@ function Team() {
   };
 
   useEffect(() => {
-    fetchTeams(); 
-  }, [currentPage, sortOption]); 
+    fetchTeams();
+  }, [currentPage, sortOption, fetchTeams]);
 
   // 시작 페이지와 끝 페이지 계산
   const startPage = Math.floor((currentPage - 1) / maxPageButtons) * maxPageButtons + 1;
   const endPage = Math.min(startPage + maxPageButtons - 1, totalPages);
 
+  
   return (
     <div className="team-page">
       <div className="header-container">

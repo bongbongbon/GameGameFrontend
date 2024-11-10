@@ -24,7 +24,7 @@ function UserSidebar({ isOpen, toggleSidebar }) {
 
   return (
     <div className={`user-sidebar ${isOpen ? 'open' : ''}`}>
-      <a className='user-sidebar-logo'>개발 세발</a>
+      <a className='user-sidebar-logo' href='/'>개발 세발</a>
       <button className="user-sidebar-close-button" onClick={toggleSidebar}>X</button>
       <div className='user-sidebar-profile'>
         {user ? (
@@ -42,9 +42,9 @@ function UserSidebar({ isOpen, toggleSidebar }) {
 
       <ul className="user-sidebar-list">
         <li>
-          <a className="user-sidebar-mainmenu" onClick={toggleAccountMenu}>
+          <button className="user-sidebar-mainmenu" onClick={toggleAccountMenu}>
             계정
-          </a>
+          </button>
           {isAccountOpen && (
             <ul className="user-sidebar-submenu">
               <li><Link to="/user/account/profile">프로필</Link></li>
@@ -53,9 +53,9 @@ function UserSidebar({ isOpen, toggleSidebar }) {
           )}
         </li>
         <li>
-          <a className="user-sidebar-mainmenu" onClick={toggleResumeMenu}>
+          <button className="user-sidebar-mainmenu" onClick={toggleResumeMenu}>
             이력서
-          </a>
+          </button>
           {isResumeOpen && (
             <ul className="user-sidebar-submenu">
               <li><Link to="/resume/create">이력서 작성</Link></li>
@@ -64,9 +64,9 @@ function UserSidebar({ isOpen, toggleSidebar }) {
           )}
         </li>
         <li>
-          <a className="user-sidebar-mainmenu" onClick={togglePortfolioMenu}>
+          <button className="user-sidebar-mainmenu" onClick={togglePortfolioMenu}>
             포트폴리오
-          </a>
+          </button>
           {isPortfolioOpen && (
             <ul className="user-sidebar-submenu">
               <li><Link to="/portfolio/create">포트폴리오 작성</Link></li>

@@ -101,6 +101,15 @@
 }
 
 .user-sidebar-mainmenu {
+  display: block;
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: left;
+  padding: 10px 0;
   cursor: pointer;
+  font-family: inherit; /* Inherits the font style from the parent container */
 }
 

@@ -13,7 +13,7 @@ function SignUp() {
   const [passwordCheck, setPasswordCheck] = useState('');
   const [nickName, setNickName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [userRole, setUserRole] = useState('USER');
+  const [userRole] = useState('USER');
   const navigate = useNavigate();
   const { signup } = useContext(AuthContext); // Ensure signup function is defined in AuthContext
 
@@ -75,7 +75,7 @@ function SignUp() {
         </div>
 
         <div className='form-group'>
-          <label>핸드폰 번호: (ex 010-0000-0000)</label>
+          <label>핸드폰 번호: (ex010-0000-0000)</label>
           <input
             type="text"
             value={phoneNumber}

@@ -24,9 +24,9 @@ function UserMenubar() {
     <div className='user-menubar'>
       <ul className="user-menubar-list">
         <li>
-          <a className="user-menubar-mainmenu" onClick={toggleAccountMenu}>
+          <button className="user-menubar-mainmenu" onClick={toggleAccountMenu}>
             계정
-          </a>
+          </button>
           {isAccountOpen && (
             <ul className="user-menubar-submenu">
               <li><Link to="/user/account/profile">프로필</Link></li>
@@ -35,9 +35,9 @@ function UserMenubar() {
           )}
         </li>
         <li>
-          <a className="user-menubar-mainmenu" onClick={toggleResumeMenu}>
+          <button className="user-menubar-mainmenu" onClick={toggleResumeMenu}>
             이력서
-          </a>
+          </button>
           {isResumeOpen && (
             <ul className="user-menubar-submenu">
               <li><Link to="/resume/create">이력서 작성</Link></li>
@@ -46,9 +46,9 @@ function UserMenubar() {
           )}
         </li>
         <li>
-          <a className="user-menubar-mainmenu" onClick={togglePortfolioMenu}>
+          <button className="user-menubar-mainmenu" onClick={togglePortfolioMenu}>
             포트폴리오
-          </a>
+          </button>
           {isPortfolioOpen && (
             <ul className="user-menubar-submenu">
               <li><Link to="/portfolio/create">포트폴리오 작성</Link></li>

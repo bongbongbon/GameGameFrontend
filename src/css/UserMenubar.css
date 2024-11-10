@@ -16,17 +16,19 @@
     margin: 0;
   }
   
-  /* 메인 메뉴 스타일 */
   .user-menubar-mainmenu {
     display: block;
-    padding: 10px;
-    font-size: 16px;
-    font-weight: bold;
+    background: none;
+    border: none;
     color: #333;
-    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: left;
+    padding: 10px 0;
     cursor: pointer;
-    transition: color 0.2s ease;
+    font-family: inherit; /* Inherits the font style from the parent container */
   }
+  
   
   .user-menubar-mainmenu:hover {
     color: #90DC1E;

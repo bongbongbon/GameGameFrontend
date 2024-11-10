@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import '../../css/ResumeDetail.css';
 import Navbar from '../../components/Navbar';
 import Header from '../../components/Header';
@@ -7,11 +7,11 @@ import axiosInstance from '../../contexts/axiosInstance';
 import { useParams } from 'react-router-dom';
 
 function ResumeDetail() {
-    const { resumeId } = useParams(); // Get the resumeId from the URL parameters
-    const [title, setTitle] = useState(''); // Add title state
+    const { resumeId } = useParams(); 
+    const [title, setTitle] = useState(''); 
     const [selectedJobs, setSelectedJobs] = useState([]);
     const [careers, setCareers] = useState([]);
-    const [isEditMode, setIsEditMode] = useState(true); // Enable edit mode by default
+    // const [isEditMode, setIsEditMode] = useState(true); 
 
     const jobOptions = [
         '웹 백엔드',
@@ -23,22 +23,23 @@ function ResumeDetail() {
         '기타'
     ];
 
-    // Fetch resume data by ID
-    const fetchResume = async () => {
-        try {
-            const response = await axiosInstance.get(`/api/v1/resumes/${resumeId}`);
-            const { title, selectedJobs, careerResponses } = response.data.data;
-            setTitle(title || ''); // Set title
-            setSelectedJobs(selectedJobs || []);
-            setCareers(careerResponses || []);
-        } catch (error) {
-            console.error('Error fetching resume:', error);
-        }
-    };
 
-    useEffect(() => {
-        fetchResume(); // Fetch resume data when component mounts
-    }, [resumeId]);
+
+    const fetchResume = useCallback(async () => {
+      try {
+          const response = await axiosInstance.get(`/api/v1/resumes/${resumeId}`);
+          const { title, selectedJobs, careerResponses } = response.data.data;
+          setTitle(title || '');
+          setSelectedJobs(selectedJobs || []);
+          setCareers(careerResponses || []);
+      } catch (error) {
+          console.error('Error fetching resume:', error);
+      }
+  }, [resumeId]);
+
+  useEffect(() => {
+    fetchResume();
+}, [fetchResume]);
 
     const handleJobChange = (job) => {
         if (selectedJobs.includes(job)) {
@@ -64,7 +65,7 @@ function ResumeDetail() {
 
     const handleUpdate = async () => {
         const requestData = {
-            title, // Include title in the update request
+            title, 
             selectedJobs,
             careerUpdateRequests: careers.map((career) => ({
                 id: career.id,
@@ -81,7 +82,7 @@ function ResumeDetail() {
         try {
             const response = await axiosInstance.patch(`/api/v1/resumes/${resumeId}`, requestData);
             console.log('Resume updated successfully:', response.data);
-            fetchResume(); // Refresh data after update
+            fetchResume(); 
         } catch (error) {
             console.error('Error updating resume:', error);
         }
@@ -91,7 +92,6 @@ function ResumeDetail() {
         try {
             const response = await axiosInstance.delete(`/api/v1/resumes/${resumeId}`);
             console.log('Resume deleted successfully:', response.data);
-            // Redirect or clear state after deletion
             setTitle('');
             setSelectedJobs([]);
             setCareers([]);
@@ -115,7 +115,7 @@ function ResumeDetail() {
                     <input
                         type="text"
                         value={title}
-                        onChange={(e) => setTitle(e.target.value)} // Update title state
+                        onChange={(e) => setTitle(e.target.value)}
                         className="resume-title-input"
                         placeholder="이력서 제목을 입력하세요"
                     />
