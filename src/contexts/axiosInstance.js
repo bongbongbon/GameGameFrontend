@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://3.37.198.42:8080',
+  baseURL: 'https://gamegameapp.co.kr',
 });
 
 // 요청 인터셉터 추가
