@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import Navbar from '../../components/Navbar';
 import Header from '../../components/Header';
 import UserMenubar from '../../components/UserMenubar';
@@ -8,17 +8,11 @@ import axiosInstance from '../../contexts/axiosInstance';
 import { useNavigate } from 'react-router-dom';
 
 function UserDelete() {
-    const { user, logout } = useContext(AuthContext);
+    const { logout } = useContext(AuthContext);
     const [emailCheck, setEmailCheck] = useState('');
     const [message, setMessage] = useState('');
-    const [email, setEmail] = useState('');
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (user) {
-            setEmail(user.email || '');
-        }
-    }, [user]);
 
     const handleDelete = async (e) => {
         e.preventDefault(); // form submission 방지
