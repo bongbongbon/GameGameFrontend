@@ -18,6 +18,7 @@ function TeamList() {
         params: {
           page: currentPage, 
           size: teamsPerPage,
+          sortOption : "최신순"
         }
       });
 

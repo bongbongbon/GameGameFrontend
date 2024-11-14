@@ -16,6 +16,7 @@ const AuthProvider = ({ children }) => {
       const token = response.data.data.accessToken;
       localStorage.setItem('token', token);
       setToken(token);
+      fetchUser();
     } catch (error) {
       throw error;
     }
