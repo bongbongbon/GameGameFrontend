@@ -13,11 +13,10 @@ const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       const response = await axiosInstance.post('/api/v1/auth/login', { email, password });
-      console.log(response.data)
       const token = response.data.data.accessToken;
       localStorage.setItem('token', token);
+      console.log(token);
       setToken(token);
-      fetchUser();
     } catch (error) {
       throw error.message;
     }
@@ -46,7 +45,6 @@ const AuthProvider = ({ children }) => {
       try {
         const response = await axiosInstance.get(`/api/v1/auth`);
         setUser(response.data.data);
-        console.log(response.data.data);
       } catch (error) {
         setError(error.message); // 오류 상태 업데이트
       } finally {
