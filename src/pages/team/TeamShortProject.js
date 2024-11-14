@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axiosInstance from '../../contexts/axiosInstance';
 import Navbar from '../../components/Navbar';
 import Header from '../../components/Header';
@@ -18,7 +18,7 @@ function TeamShortProject() {
   const teamsPerPage = 9; 
   const maxPageButtons = 10; // 한 번에 표시할 최대 페이지 버튼 수
 
-  const fetchTeams = async () => {
+  const fetchTeams = useCallback(async () => {
     try {
       const response = await axiosInstance.get('/api/v1/teams/search', {
         params: {
@@ -29,9 +29,6 @@ function TeamShortProject() {
           sortOption: sortOption,
         }
       });
-
-      console.log(sortOption);
-      console.log(response.data.data);
 
       if (response.data && response.data.data) {
         setTeams(Array.isArray(response.data.data.content) ? response.data.data.content : []);
@@ -45,13 +42,12 @@ function TeamShortProject() {
     } finally {
       setLoading(false); 
     }
-  };
+  }, [currentPage, searchTerm, sortOption]);
 
   const handlePageChange = (pageNumber) => {
-      // Ensure the page number stays within the valid range
-  if (pageNumber >= 1 && pageNumber <= totalPages) {
-    setCurrentPage(pageNumber);
-  }
+    if (pageNumber >= 1 && pageNumber <= totalPages) {
+      setCurrentPage(pageNumber);
+    }
   };
 
   const handleSearch = () => {
@@ -61,7 +57,7 @@ function TeamShortProject() {
 
   useEffect(() => {
     fetchTeams(); 
-  }, [currentPage, sortOption]); 
+  }, [currentPage, sortOption, fetchTeams]); 
 
   // 시작 페이지와 끝 페이지 계산
   const startPage = Math.floor((currentPage - 1) / maxPageButtons) * maxPageButtons + 1;
@@ -90,27 +86,30 @@ function TeamShortProject() {
           <h2>단기 프로젝트</h2>        
           <p>{totalElements} 개의 팀이 검색되었습니다.</p>
           <div className="team-list">
-          {loading ? (
-                <p className='loading-message'>로딩 중...</p>
-              ) : teams.length === 0 ? (
-                <p className="no-teams-message">팀이 없습니다.</p>
-              ) : (
-        teams.map(team => (
-          <div className="team-card" key={team.id}>
-            <Link to={`/team/${team.id}`} className="team-link">
-              <span className="team-category">{team.teamCategory}</span>
-              <p className="team-domain">{team.domain}</p>
-              <h3 className="team-title">{team.title}</h3>
-              <p className="team-description">{team.description}</p>
-              <p className="team-member-number">팀원 수: {team.memberNumber}명</p>
-              <p className="team-recruitment">모집 기간: <strong>{team.recruitmentStartDate} - {team.recruitmentEndDate}</strong></p>
-              <p className="team-project">프로젝트 기간: <strong>{team.projectStartDate} - {team.projectEndDate}</strong></p>
-            </Link>
-          </div>
-        ))
-      )}
+            {loading ? (
+              <p className='loading-message'>로딩 중...</p>
+            ) : teams.length === 0 ? (
+              <p className="no-teams-message">팀이 없습니다.</p>
+            ) : (
+              teams.map(team => (
+                <div className="team-card" key={team.id}>
+                  <Link to={`/team/${team.id}`} className="team-link">
+                    <span className="team-category">{team.teamCategory}</span>
+                    <p className="team-domain">{team.domain}</p>
+                    <h3 className="team-title">{team.title}</h3>
+                    <p className="team-description">{team.description}</p>
+                    <p className="team-member-number">팀원 수: {team.memberNumber}명</p>
+                    <p className="team-recruitment">모집 기간: <strong>{team.recruitmentStartDate} - {team.recruitmentEndDate}</strong></p>
+                    <p className="team-project">프로젝트 기간: <strong>{team.projectStartDate} - {team.projectEndDate}</strong></p>
+                  </Link>
+                </div>
+              ))
+            )}
           </div>
         </div>
+
+        {/* Error Message */}
+        {error && <p className="error-message">{error}</p>}
 
         <div className="pagination">
           <button
