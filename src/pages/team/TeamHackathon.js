@@ -30,8 +30,6 @@ function TeamHackathon() {
         }
       });
 
-      console.log(sortOption);
-      console.log(response.data.data);
 
       if (response.data && response.data.data) {
         setTeams(Array.isArray(response.data.data.content) ? response.data.data.content : []);
