@@ -13,12 +13,13 @@ const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       const response = await axiosInstance.post('/api/v1/auth/login', { email, password });
+      console.log(response.data)
       const token = response.data.data.accessToken;
       localStorage.setItem('token', token);
       setToken(token);
       fetchUser();
     } catch (error) {
-      throw error;
+      throw error.message;
     }
   };
 
