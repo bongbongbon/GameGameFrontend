@@ -11,7 +11,7 @@ function TeamUser() {
     const [team, setTeam] = useState(); // 팀 데이터를 저장할 상태
     const [loading, setLoading] = useState(true); // 로딩 상태
     const [error, setError] = useState(null); // 오류 상태
-    const [user, setUser] = useState(null);
+
 
     useEffect(() => {
         const fetchTeam = async () => {
@@ -29,23 +29,6 @@ function TeamUser() {
         fetchTeam(); // 데이터 가져오기 호출
     }, [id]);
 
-    useEffect(() => {
-        const fetchUser = async () => {
-            if (team) { // team 데이터가 존재하는 경우에만 fetchUser 호출
-                try {
-                    const response = await axiosInstance.get(`/api/v1/auth/${team.userId}`);
-                    setUser(response.data.data);
-                    console.log(response.data.data);
-                } catch (error) {
-                    setError(error.message); // 오류 상태 업데이트
-                } finally {
-                    setLoading(false); // 로딩 완료
-                }
-            }
-        };
-
-        fetchUser(); // 데이터 가져오기 호출
-    }, [team]); // team이 변경될 때만 실행
 
     if (loading) return <div className="loading">로딩 중...</div>;
     if (error) return <div className="error">오류: {error}</div>;
@@ -76,16 +59,12 @@ function TeamUser() {
                 </div>
                 <div className="team-detail-user-profile">
                     <h3>프로필 정보</h3>
-                    {user ? (
                         <div className="team-detail-profile-details">
-                            <p>{user.nickName}</p>
-                            <p>{user.email}</p>
-                            <p>{user.phoneNumber}</p>
+                            <p>{team.nickName}</p>
+                            <p>{team.email}</p>
+                            <p>{team.phoneNumber}</p>
                             {/* Add more profile information if needed */}
                         </div>
-                    ) : (
-                        <p>로그인이 필요합니다.</p>
-                    )}
                 </div>
             </div>
         </div>
