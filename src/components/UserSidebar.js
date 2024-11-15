@@ -8,6 +8,7 @@ function UserSidebar({ isOpen, toggleSidebar }) {
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [isPortfolioOpen, setIsPortfolioOpen] = useState(false);
+  const [isTeamOpen, setIsTeamOpen] = useState(false);
 
 
   const toggleAccountMenu = () => {
@@ -20,6 +21,10 @@ function UserSidebar({ isOpen, toggleSidebar }) {
 
   const togglePortfolioMenu = () => {
     setIsPortfolioOpen(!isPortfolioOpen);
+  };
+
+  const toggleTeamoMenu = () => {
+    setIsTeamOpen(!isTeamOpen);
   };
 
   return (
@@ -71,6 +76,17 @@ function UserSidebar({ isOpen, toggleSidebar }) {
             <ul className="user-sidebar-submenu">
               <li><Link to="/portfolio/create">포트폴리오 작성</Link></li>
               <li><Link to="/portfolio/view">포트폴리오 조회</Link></li>
+            </ul>
+          )}
+        </li>
+        <li>
+          <button className="user-sidebar-mainmenu" onClick={toggleTeamoMenu}>
+            팀
+          </button>
+          {isTeamOpen && (
+            <ul className="user-sidebar-submenu">
+              <li><Link to="/team/create">팀 생성</Link></li>
+              <li><Link to="/team/my">My 팀</Link></li>
             </ul>
           )}
         </li>

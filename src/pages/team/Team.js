@@ -101,7 +101,7 @@ function Team() {
                 <div className="team-card" key={team.id}>
                   <Link to={`/team/${team.id}`} className="team-link">
                     <span className="team-category">{team.teamCategory}</span>
-                    <p className="team-domain">{team.domain}</p>
+                    <p className="team-domain">도메인: {team.domain}</p>
                     <h3 className="team-title">{team.title}</h3>
                     <p className="team-description">{team.description}</p>
                     <p className="team-member-number">팀원 수: {team.memberNumber}명</p>

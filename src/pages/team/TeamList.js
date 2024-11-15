@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function TeamList() {
   const [teams, setTeams] = useState([]); // 팀 목록을 저장할 상태
-  const currentPage = 1; // 현재 페이지 번호
+  const [currentPage] = useState(1); // 읽기 전용 상태로 유지
   const [loading, setLoading] = useState(true); // 로딩 상태
   const [error, setError] = useState(null); // 에러 메시지
   const teamsPerPage = 3; // 페이지당 팀 수
@@ -32,8 +32,7 @@ function TeamList() {
     } finally {
       setLoading(false);
     }
-  }, [currentPage]);
-
+  }, [currentPage, teamsPerPage]); // teamsPerPage도 의존성 배열에 추가
 
   // `useEffect`로 데이터 초기 로딩 및 페이지/정렬 변경 시 데이터 불러오기
   useEffect(() => {

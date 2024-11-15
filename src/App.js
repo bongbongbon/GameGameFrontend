@@ -27,7 +27,10 @@ import TeamSidejob from './pages/team/TeamSidejob';
 import TeamShortProject from './pages/team/TeamShortProject';
 import TeamCompetition from './pages/team/TeamCompetition';
 import TeamHackathon from './pages/team/TeamHackathon';
+import TeamStudy from './pages/team/TeamStudy';
 import TeamCreate from './pages/team/TeamCreate';
+import TeamUser from './pages/team/TeamUser';
+
 
 import Member from './pages/member/Member';
 
@@ -74,8 +77,10 @@ function App() {
             <Route path="/team/shortproject" element={<TeamShortProject />} />
             <Route path="/team/competition" element={<TeamCompetition />} />
             <Route path="/team/hackathon" element={<TeamHackathon />} />
+            <Route path="/team/study" element={<TeamStudy />} />
             <Route path="/team/create" element={<TeamCreate />} />
             <Route path="/team/:id" element={<TeamDetail />} />
+            <Route path="/team/:id/user" element={<TeamUser />} />
 
 
             <Route path="/resume/create" element={<ResumeCreate />} />

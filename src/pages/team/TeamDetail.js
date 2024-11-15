@@ -65,6 +65,7 @@ function TeamDetail() {
                         <img src="https://picsum.photos/1300/300" alt="Team" />
                     </div>
                     <div className="team-info">
+                        <p>도메인: {team.domain}</p>
                         <p>모집 기간: {team.recruitmentStartDate} - {team.recruitmentEndDate}</p>
                         <p>프로젝트 기간: {team.recruitmentStartDate} - {team.recruitmentEndDate}</p>
                         <p>팀원 수: {team.memberNumber}명</p>

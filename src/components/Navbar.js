@@ -16,9 +16,6 @@ function Navbar() {
             <Link to="/portfolio">포트폴리오</Link>
           </li>
           <li>
-            <Link to="/success">합격 tip</Link>
-          </li>
-          <li>
             <Link to="/notice">공지사항</Link>
           </li>
       </ul>
